@@ -1,0 +1,80 @@
+ <!doctype html>
+<html>
+<head> 
+<title> Celsius To Fahrenheit Converter in AngularJS </title>
+</head>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.filter('singleDecimal', function ($filter) {
+return function (input) {
+if (isNaN(input)) return input;
+return Math.round(input * 10) / 10;
+};
+});
+app.filter('setDecimal', function ($filter) {
+return function (input, places) {
+if (isNaN(input)) return input;
+ var factor = "1" + Array(+(places > 0 && places + 1)).join("0");
+return Math.round(input * factor) / factor;
+};
+});
+app.controller('Ctrl', function ($scope) {
+$scope.val = 1.56;
+});
+</script>
+ <body bgcolor="brown">
+<br><br>
+<h3> Celsius To Fahrenheit Converter in AngularJS</h3>
+<div ng-app="myApp">
+<p>Enter temperature in Celsius :
+<input type="text" ng-model="fahrenheit" maxlength="5" size="3"/>
+</p><br>
+<p>The temperature in celsius is {{ fahrenheit }}°C its equivalent to fahrenheit is {{ (fahrenheit * 9/5) + 32 | setDecimal:1}}°F.</p>
+</div>.
+</body>
+</html>
+
+1)Laravel applications follow the traditional Model-View-Controller design pattern, we Use
+
+* Controllers to handle user requests and retrieve data, by leveraging Models.
+* Models to interact with your database and retrieve your objects’ information.
+* Views to render pages.
+
+A request is made — say, when a user enters a URL associated with your application.
+A route associated with that URL maps the URL to a controller action.
+That controller action leverages the necessary model(s) to retrieve information from the database, and then passes that data off to a view.
+And that view renders the final page.
+
+2)
+a)HTML
+
+This is the simple part. We’re using Bootstrap and Font Awesome. Open up your index.html file and we’ll add a simple layout with a navigation bar.
+
+b)Angular Application
+
+MODULE AND CONTROLLER
+
+We’re going to setup our application. Let’s create the angular module and controller.
+
+First, we have to create our module and controller in javascript. We will do that now in script.js.
+
+Let’s add the module and controller to our HTML so that Angular knows how to bootstrap our application. To test that everything is working, we will also show the $scope.message variable that we created.
+
+Inside of our main div, we will now see the message that we created. Since we have our module and controller set up and we know that Angular is working properly, we will start working on using this layout to show the different pages.
+
+b)INJECTING PAGES INTO THE MAIN LAYOUT
+
+ng-view is an Angular directive that will include the template of the current route (/home, /about, or /contact) in the main layout file. In plain words, it takes the file we want based on the route and injects it into our main layout (index.html).
+
+We will add the ng-view code to our site in the div#main to tell Angular where to place our rendered pages.
+
+c)Configure Routes and Views
+
+Since we are making a single page application and we don’t want any page refreshes, we’ll use Angular’s routing capabilities.
+
+Let’s look in our Angular file and add to our application. We will be using $routeProvider in Angular to handle our routing. This way, Angular will handle all of the magic required to go get a new file and inject it into our layout.
+
+Now we have defined our routes with $routeProvider. As you can see by the configuration, you can specify the route, the template file to use, and even a controller. This way, each part of our application will use its own view and Angular controller.
+
+Our home page will pull the home.html file. About and contact will pull their respective files. Now if we view our app, and click through the navigation, our content will change just how we wanted.
