@@ -1,39 +1,4 @@
- <!doctype html>
-<html>
-<head> 
-<title> Celsius To Fahrenheit Converter in AngularJS </title>
-</head>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-<script>
-var app = angular.module('myApp', []);
-app.filter('singleDecimal', function ($filter) {
-return function (input) {
-if (isNaN(input)) return input;
-return Math.round(input * 10) / 10;
-};
-});
-app.filter('setDecimal', function ($filter) {
-return function (input, places) {
-if (isNaN(input)) return input;
- var factor = "1" + Array(+(places > 0 && places + 1)).join("0");
-return Math.round(input * factor) / factor;
-};
-});
-app.controller('Ctrl', function ($scope) {
-$scope.val = 1.56;
-});
-</script>
- <body bgcolor="brown">
-<br><br>
-<h3> Celsius To Fahrenheit Converter in AngularJS</h3>
-<div ng-app="myApp">
-<p>Enter temperature in Celsius :
-<input type="text" ng-model="fahrenheit" maxlength="5" size="3"/>
-</p><br>
-<p>The temperature in celsius is {{ fahrenheit }}°C its equivalent to fahrenheit is {{ (fahrenheit * 9/5) + 32 | setDecimal:1}}°F.</p>
-</div>.
-</body>
-</html>
+ 
 
 1)Laravel applications follow the traditional Model-View-Controller design pattern, we Use
 
